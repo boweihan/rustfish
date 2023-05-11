@@ -1,0 +1,2 @@
+# rustfish
+Rust Chess Engine
