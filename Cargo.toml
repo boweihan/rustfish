@@ -2,5 +2,5 @@
 
 members = [
     "rustfish",
-    "rustfish-lichess"
+    "rustfish-bot"
 ]
