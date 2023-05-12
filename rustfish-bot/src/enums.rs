@@ -1,9 +1,5 @@
-pub struct UCIController {}
-
-impl UCIController {}
-
 // UCI Spec: https://www.wbec-ridderkerk.nl/html/UCIProtocol.html
-enum GUICommand {
+pub enum GUICommand {
     Uci,
     Debug,
     IsReady,
@@ -35,7 +31,7 @@ impl GUICommand {
     }
 }
 
-enum EngineCommand {
+pub enum EngineCommand {
     Id,
     UciOk,
     ReadyOk,

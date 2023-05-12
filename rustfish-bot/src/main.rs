@@ -1,5 +1,9 @@
-mod uci;
+mod controller;
+mod engine;
+mod enums;
+
+use crate::controller::UCIController;
 
 fn main() {
-    println!("Hello, world!");
+    UCIController::default().start();
 }
