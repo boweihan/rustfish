@@ -7,6 +7,7 @@ pub const REGISTER: &str = "register";
 pub const UCI_NEW_GAME: &str = "ucinewgame";
 pub const POSITION: &str = "position";
 pub const GO: &str = "go";
+pub const PERFT: &str = "perft";
 pub const STOP: &str = "stop";
 pub const PONDER_HIT: &str = "ponderhit";
 pub const QUIT: &str = "quit";

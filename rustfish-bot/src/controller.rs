@@ -4,7 +4,9 @@ use crate::constants;
 use crate::engine::UCIEngine;
 use crate::enums::GUICommand;
 
-pub struct UCIController {}
+pub struct UCIController {
+    sender: mpsc::Sender<GUICommand>,
+}
 
 impl Default for UCIController {
     fn default() -> Self {
@@ -13,9 +15,9 @@ impl Default for UCIController {
 
         // create a thread for the engine that processes the commands from the main thread
         // move closure variables into thread ownership
-        thread::spawn(move || UCIEngine::new());
+        thread::spawn(move || UCIEngine::new(rx).start());
 
-        UCIController {}
+        UCIController { sender: tx }
     }
 }
 
@@ -38,15 +40,11 @@ impl UCIController {
                     }
                     GUICommand::Debug => println!("Not implemented yet!"),
                     GUICommand::IsReady => println!("{}", constants::READY_OK),
-                    GUICommand::SetOption => println!("Not implemented yet!"),
                     GUICommand::Register => println!("Not implemented yet!"),
-                    GUICommand::UciNewGame => println!("Not implemented yet!"),
-                    GUICommand::Position => println!("Not implemented yet!"),
-                    GUICommand::Go => println!("Not implemented yet!"),
                     GUICommand::Stop => println!("Not implemented yet!"),
                     GUICommand::PonderHit => println!("Not implemented yet!"),
                     GUICommand::Quit => break,
-                    _ => println!("Not implemented yet!"),
+                    _ => self.sender.send(command).unwrap(),
                 },
                 Err(e) => eprintln!("{e}"),
             }
