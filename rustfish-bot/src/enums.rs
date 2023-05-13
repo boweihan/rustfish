@@ -38,14 +38,3 @@ impl FromStr for GUICommand {
         }
     }
 }
-
-pub enum EngineCommand {
-    Id,
-    UciOk,
-    ReadyOk,
-    BestMove,
-    CopyProtection,
-    Registration,
-    Info,
-    Option,
-}

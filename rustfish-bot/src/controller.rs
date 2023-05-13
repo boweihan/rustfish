@@ -2,7 +2,7 @@ use std::{io, io::BufRead, sync::mpsc, thread};
 
 use crate::constants;
 use crate::engine::UCIEngine;
-use crate::enums::{EngineCommand, GUICommand};
+use crate::enums::GUICommand;
 
 pub struct UCIController {}
 
