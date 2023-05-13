@@ -45,14 +45,14 @@ impl UCIController {
                     GUICommand::Go => println!("Not implemented yet!"),
                     GUICommand::Stop => println!("Not implemented yet!"),
                     GUICommand::PonderHit => println!("Not implemented yet!"),
-                    GUICommand::Quit => return,
+                    GUICommand::Quit => break,
                     _ => println!("Not implemented yet!"),
                 },
                 Err(e) => eprintln!("{e}"),
             }
         }
 
-        println!("Invalid input, exiting program!")
+        println!("Thanks for using RustFish! Exiting...")
 
         // delegate engine operations to the engine on a separate thread
     }
