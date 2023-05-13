@@ -1,5 +1,6 @@
-use std::{sync::mpsc, thread, time::Duration};
+use std::{io, io::BufRead, sync::mpsc, thread};
 
+use crate::constants;
 use crate::engine::UCIEngine;
 use crate::enums::{EngineCommand, GUICommand};
 
@@ -21,9 +22,37 @@ impl Default for UCIController {
 impl UCIController {
     // kick off the main loop to process stdin from the GUI
     pub fn start(&self) {
-        println!("RustFish by Bowei Han")
+        println!("Welcome to RustFish!");
 
-        // handle synchronous operations
+        let mut lines = io::stdin().lock().lines();
+
+        while let Some(line) = lines.next() {
+            match line.unwrap().parse::<GUICommand>() {
+                Ok(command) => match command {
+                    GUICommand::Uci => {
+                        println!(
+                            "{} name RustFish\nid author Bowei Han\n{}",
+                            constants::ID,
+                            constants::UCI_OK
+                        )
+                    }
+                    GUICommand::Debug => println!("Not implemented yet!"),
+                    GUICommand::IsReady => println!("{}", constants::READY_OK),
+                    GUICommand::SetOption => println!("Not implemented yet!"),
+                    GUICommand::Register => println!("Not implemented yet!"),
+                    GUICommand::UciNewGame => println!("Not implemented yet!"),
+                    GUICommand::Position => println!("Not implemented yet!"),
+                    GUICommand::Go => println!("Not implemented yet!"),
+                    GUICommand::Stop => println!("Not implemented yet!"),
+                    GUICommand::PonderHit => println!("Not implemented yet!"),
+                    GUICommand::Quit => return,
+                    _ => println!("Not implemented yet!"),
+                },
+                Err(e) => eprintln!("{e}"),
+            }
+        }
+
+        println!("Invalid input, exiting program!")
 
         // delegate engine operations to the engine on a separate thread
     }
