@@ -1,6 +1,6 @@
 use std::str::FromStr;
 
-use crate::constants;
+use crate::{constants, position::Position};
 
 // UCI Spec: https://www.wbec-ridderkerk.nl/html/UCIProtocol.html
 pub enum GUICommand {
@@ -10,7 +10,7 @@ pub enum GUICommand {
     SetOption,
     Register,
     UciNewGame,
-    Position,
+    Position(Box<Position>),
     Go,
     Perft,
     Stop,
@@ -30,7 +30,9 @@ impl FromStr for GUICommand {
             Some(constants::SET_OPTION) => Ok(GUICommand::SetOption),
             Some(constants::REGISTER) => Ok(GUICommand::Register),
             Some(constants::UCI_NEW_GAME) => Ok(GUICommand::UciNewGame),
-            Some(constants::POSITION) => Ok(GUICommand::Position),
+            Some(constants::POSITION) => Ok(GUICommand::Position(Box::new(
+                tokens.collect::<Vec<&str>>().join(" ").parse()?,
+            ))),
             Some(constants::GO) => Ok(GUICommand::Go),
             Some(constants::PERFT) => Ok(GUICommand::Perft),
             Some(constants::STOP) => Ok(GUICommand::Stop),

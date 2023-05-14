@@ -2,6 +2,7 @@ mod constants;
 mod controller;
 mod engine;
 mod enums;
+mod position;
 
 use crate::controller::UCIController;
 

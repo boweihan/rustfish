@@ -38,11 +38,11 @@ impl UCIController {
                             constants::UCI_OK
                         )
                     }
-                    GUICommand::Debug => println!("Not implemented yet!"),
+                    GUICommand::Debug => println!("debug is not implemented yet!"),
                     GUICommand::IsReady => println!("{}", constants::READY_OK),
-                    GUICommand::Register => println!("Not implemented yet!"),
-                    GUICommand::Stop => println!("Not implemented yet!"),
-                    GUICommand::PonderHit => println!("Not implemented yet!"),
+                    GUICommand::Register => println!("register is not implemented yet!"),
+                    GUICommand::Stop => println!("stop is not implemented yet!"),
+                    GUICommand::PonderHit => println!("ponderhit is not implemented yet!"),
                     GUICommand::Quit => break,
                     _ => self.sender.send(command).unwrap(),
                 },
