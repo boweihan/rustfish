@@ -4,6 +4,7 @@ mod controller;
 mod engine;
 mod enums;
 mod position;
+mod state;
 
 use crate::controller::UCIController;
 
