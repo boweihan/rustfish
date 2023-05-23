@@ -34,12 +34,12 @@ impl UCIController {
                     GUICommand::Uci => {
                         println!(
                             "{} name RustFish\nid author Bowei Han\n{}",
-                            constants::ID,
-                            constants::UCI_OK
+                            constants::EngineOutput::ID,
+                            constants::EngineOutput::UCI_OK
                         )
                     }
                     GUICommand::Debug => println!("debug is not implemented yet!"),
-                    GUICommand::IsReady => println!("{}", constants::READY_OK),
+                    GUICommand::IsReady => println!("{}", constants::EngineOutput::READY_OK),
                     GUICommand::Register => println!("register is not implemented yet!"),
                     GUICommand::Stop => println!("stop is not implemented yet!"),
                     GUICommand::PonderHit => println!("ponderhit is not implemented yet!"),

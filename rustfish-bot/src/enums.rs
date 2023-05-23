@@ -24,20 +24,20 @@ impl FromStr for GUICommand {
     fn from_str(s: &str) -> Result<Self, Self::Err> {
         let mut tokens = s.split_whitespace();
         match tokens.next() {
-            Some(constants::UCI) => Ok(GUICommand::Uci),
-            Some(constants::DEBUG) => Ok(GUICommand::Debug),
-            Some(constants::IS_READY) => Ok(GUICommand::IsReady),
-            Some(constants::SET_OPTION) => Ok(GUICommand::SetOption),
-            Some(constants::REGISTER) => Ok(GUICommand::Register),
-            Some(constants::UCI_NEW_GAME) => Ok(GUICommand::UciNewGame),
-            Some(constants::POSITION) => Ok(GUICommand::Position(Box::new(
+            Some(constants::EngineInput::UCI) => Ok(GUICommand::Uci),
+            Some(constants::EngineInput::DEBUG) => Ok(GUICommand::Debug),
+            Some(constants::EngineInput::IS_READY) => Ok(GUICommand::IsReady),
+            Some(constants::EngineInput::SET_OPTION) => Ok(GUICommand::SetOption),
+            Some(constants::EngineInput::REGISTER) => Ok(GUICommand::Register),
+            Some(constants::EngineInput::UCI_NEW_GAME) => Ok(GUICommand::UciNewGame),
+            Some(constants::EngineInput::POSITION) => Ok(GUICommand::Position(Box::new(
                 tokens.collect::<Vec<&str>>().join(" ").parse()?,
             ))),
-            Some(constants::GO) => Ok(GUICommand::Go),
-            Some(constants::PERFT) => Ok(GUICommand::Perft),
-            Some(constants::STOP) => Ok(GUICommand::Stop),
-            Some(constants::PONDER_HIT) => Ok(GUICommand::PonderHit),
-            Some(constants::QUIT) => Ok(GUICommand::Quit),
+            Some(constants::EngineInput::GO) => Ok(GUICommand::Go),
+            Some(constants::EngineInput::PERFT) => Ok(GUICommand::Perft),
+            Some(constants::EngineInput::STOP) => Ok(GUICommand::Stop),
+            Some(constants::EngineInput::PONDER_HIT) => Ok(GUICommand::PonderHit),
+            Some(constants::EngineInput::QUIT) => Ok(GUICommand::Quit),
             _ => Err("Unable to parse input"),
         }
     }

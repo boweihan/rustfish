@@ -1,3 +1,4 @@
+mod bitboard;
 mod constants;
 mod controller;
 mod engine;
